@@ -1,0 +1,26 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "src",
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverageFrom": [
+    "**/*.(t|j)s",
+    "!main.(t|j)s",
+    "!**/*.module.(t|j)s",
+    "!**/*.dto.(t|j)s"
+  ],
+  "coverageDirectory": "../coverage",
+  "testEnvironment": "node",
+  "transformIgnorePatterns": [
+    "node_modules/(?!@faker-js/faker)"
+  ],
+  "moduleNameMapper": {
+    "^@common/(.*)$": "<rootDir>/common/$1",
+    "^@modules/(.*)$": "<rootDir>/modules/$1",
+    "^@generated/(.*)$": "<rootDir>/../generated/$1",
+    "^@test/(.*)$": "<rootDir>/../test/$1",
+    "^(\\.\\.?\\/.+)\\.js$": "$1"
+  }
+}

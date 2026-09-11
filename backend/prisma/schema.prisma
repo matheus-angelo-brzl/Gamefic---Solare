@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                   String       @id @default(uuid())
+  email                String       @unique
+  name                 String
+  password             String
+  role                 Role         @default(member)
+
+  recordXp             Int          @default(0)
+  recordMissions       Int          @default(0)
+  recordPosition       Int          @default(0)
+  firstPlaceCount      Int          @default(0)
+  secondPlaceCount     Int          @default(0)
+  thirdPlaceCount      Int          @default(0)
+
+  createdTasks         Task[]
+  submissions          Submission[]
+  validatedSubmissions Submission[] @relation("ValidatedSubmissions")
+  rankings             Ranking[]
+}
+
+model Edition {
+  id              String    @id @default(uuid())
+  name            String
+  startDate       DateTime
+  endDate         DateTime
+  rankingEndDate  DateTime?
+  isActive        Boolean   @default(true)
+
+  tasks           Task[]
+  rankings        Ranking[]
+}
+
+model Category {
+  id                String    @id @default(uuid())
+  name              String    @unique
+
+  tasks             Task[]
+}
+
+model Task {
+  id                   String    @id @default(uuid())
+  name                 String
+  description          String
+  xp                   Int
+  maxConclusions       Int?
+  remainingConclusions Int?
+  repeatNextEdition    Boolean   @default(true)
+  isActive             Boolean   @default(true)
+  createdAt            DateTime  @default(now())
+
+  editionId            String
+  edition              Edition   @relation(fields: [editionId], references: [id])
+
+  categoryId           String
+  category             Category  @relation(fields: [categoryId], references: [id])
+
+  creatorId            String
+  creator              User      @relation(fields: [creatorId], references: [id])
+
+  submissions          Submission[]
+
+  @@unique([name, editionId])
+}
+
+model Submission {
+  id                String    @id @default(uuid())
+  description       String
+  attachmentKey     String
+  fileName          String
+  status            SubmissionStatus    @default(pending)
+  createdAt         DateTime  @default(now())
+
+  taskId            String
+  task              Task      @relation(fields: [taskId], references: [id])
+
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+
+  validatorId       String?
+  validator         User?     @relation("ValidatedSubmissions", fields: [validatorId], references: [id])
+}
+
+model Ranking {
+  id                String    @id @default(uuid())
+  position          Int
+  xpCount           Int
+  missionsCount     Int
+
+  editionId         String
+  edition           Edition   @relation(fields: [editionId], references: [id])
+
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+
+  @@unique([editionId, userId])
+  @@index([editionId, xpCount(sort: Desc)])
+}
+
+enum Role {
+  member
+  rh
+}
+
+enum SubmissionStatus {
+  pending
+  approved
+  rejected
+}

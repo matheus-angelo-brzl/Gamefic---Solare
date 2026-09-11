@@ -1,0 +1,93 @@
+/* src/components/Sidebar/Sidebar.css */
+.sidebar {
+  background-color: #FFFFFF;
+  width: 260px;
+  height: 100dvh;
+  
+  /* 🔒 TRAVA A SIDEBAR NA ESQUERDA FIXA */
+  position: fixed; 
+  left: 0;
+  top: 0;
+  z-index: 1000; 
+  
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  border-right: 1px solid #D5D5D5; 
+}
+
+/* Alinhamento da Logo com o Nome */
+.sidebar-logo { 
+  padding: 30px 24px; 
+  display: flex;
+  align-items: center;
+  gap: 14px; /* Espaço entre a logo e o texto */
+  border-bottom: 1px solid #D5D5D5; 
+}
+
+
+.sidebar-logo .logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  display: block; 
+  /* Transforma a imagem branca no Laranja Solare */
+  filter: brightness(0) saturate(100%) invert(61%) sepia(34%) saturate(1031%) hue-rotate(344deg) brightness(91%) contrast(88%);
+}
+
+/* 📐 NOME SOLARE */
+.sidebar-logo h2 {
+  margin: 0;
+  font-size: 40px; 
+  font-weight: 700;
+  color: #D98836; 
+  letter-spacing: -0.02em;
+}
+
+.sidebar-nav { 
+  flex: 1; 
+  padding: 24px 16px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+
+.nav-item {
+  padding: 14px 20px;
+  color: #717171; 
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: #F5F5F5; 
+  color: #1E1E1E;
+}
+
+.nav-item.active { 
+  background-color: rgba(217, 136, 54, 0.1); 
+  color: #D98836; 
+  border-left: 4px solid #D98836; 
+  font-weight: 600;
+}
+
+.sidebar-footer { 
+  padding: 20px; 
+  border-top: 1px solid #D5D5D5; 
+}
+
+.logout-btn { 
+  color: #D94F36; 
+  text-decoration: none; 
+  font-weight: 600; 
+  font-size: 14px; 
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+.mobile-toggle, .sidebar-overlay { display: none; }

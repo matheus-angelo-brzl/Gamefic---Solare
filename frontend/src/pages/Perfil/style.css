@@ -1,0 +1,135 @@
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* HEADER MANTÉM-SE IGUAL */
+.perfil-header {
+  background: linear-gradient(135deg, #d94f36 0%, #d98836 100%);
+  padding: 40px 16px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #d94f36;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.perfil-header h1 {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+.perfil-header h2 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+
+.perfil-content {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section-title {
+  font-size: 14px;
+  color: #717171;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+/* NOVA GRELHA 2 COLUNAS */
+.stats-grid-2x3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ESTANTE DE TROFÉUS */
+.trophy-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.trophy-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.2s ease;
+}
+
+.trophy-icon:hover {
+  transform: scale(1.1);
+}
+
+/* LISTA DE SUBMISSÕES MANTÉM-SE IGUAL */
+.submissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.submission-card {
+  background-color: #ffffff;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.submission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.submission-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.submission-info h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #1e1e1e;
+  font-weight: 600;
+}
+.submission-info span {
+  font-size: 12px;
+  color: #d98836;
+  font-weight: 600;
+}
+.submission-status {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

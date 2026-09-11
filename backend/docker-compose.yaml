@@ -1,0 +1,31 @@
+services:
+  db-dev:
+    image: postgres:15
+    container_name: solare-postgres-dev
+    restart: unless-stopped
+    ports:
+      - '${DB_PORT}:5432'
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - solare-db-data:/var/lib/postgresql/data
+
+  minio:
+    image: minio/minio
+    container_name: solare-minio-dev
+    restart: unless-stopped
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - solare-minio-data:/data
+    command: server /data --console-address ":9001"
+
+volumes:
+  solare-db-data:
+  solare-minio-data:

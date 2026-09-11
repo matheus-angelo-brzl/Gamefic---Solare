@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reset Global de margens e preenchimentos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100dvh;
+  font-family: 'Poppins', sans-serif;
+  background-color: #F5F5F5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D5D5D5 transparent;
+}
+
+.ranking-item--moved {
+    animation: ranking-move 300ms ease;
+}
+
+@keyframes ranking-move {
+    from {
+        transform: translateY(10px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
